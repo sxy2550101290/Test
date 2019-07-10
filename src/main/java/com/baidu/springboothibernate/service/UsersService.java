@@ -4,6 +4,9 @@ package com.baidu.springboothibernate.service;
 import com.baidu.springboothibernate.domin.Users;
 import com.baidu.springboothibernate.repository.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -35,4 +38,9 @@ public class UsersService{
         return this.usersRepository.findAll(sort);
     }
 
+    public List<Users> fingpageable() {
+        Pageable pageable= PageRequest.of(0, 2);
+        Page<Users> all = this.usersRepository.findAll(pageable);
+        return all.getContent();
+    }
 }

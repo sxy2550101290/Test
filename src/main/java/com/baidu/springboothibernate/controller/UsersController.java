@@ -40,7 +40,9 @@ public class UsersController {
     public List<Users> sort(){
         return this.usersService.findAllSolrDesc();
     }
-
-
+    @RequestMapping("/page")
+    public List<Users> page(){
+        return this.usersService.fingpageable();
+    }
 
 }
